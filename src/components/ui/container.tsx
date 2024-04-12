@@ -2,7 +2,7 @@ interface ContainerProps{
     children:React.ReactNode;
 }
 
-const Contaner:React.FC<ContainerProps>=({children})=>{
+const Container:React.FC<ContainerProps>=({children})=>{
     return(
         <div className="mx-auto w-full max-w-7xl">
             {children}
@@ -10,4 +10,4 @@ const Contaner:React.FC<ContainerProps>=({children})=>{
     )
 }
 
-export default Contaner;
+export default Container;
