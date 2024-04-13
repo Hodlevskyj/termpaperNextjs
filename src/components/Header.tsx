@@ -14,15 +14,15 @@ const Header = () => {
   const { theme, setTheme } = useTheme();
   const routes = [
     {
-      href: "/",
+      href: "/products",
       label: "Products",
     },
     {
-      href: "/",
+      href: "/categories",
       label: "Categories",
     },
     {
-      href: "/",
+      href: "/onsale",
       label: "On Sale",
     },
   ]
@@ -57,6 +57,7 @@ const Header = () => {
           </div>
           <nav className="mx-6 flex items-center space-x-4 lg:space-x-6 hidden md:block">
             {routes.map((route, i) => (
+              // <Button asChild variant="ghost" key={i}>
               <Button asChild variant="ghost" key={i}>
                 <Link
                   key={i}
