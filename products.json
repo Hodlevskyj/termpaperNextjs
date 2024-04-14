@@ -1,74 +1,208 @@
 [
     {
         "id": "1",
-        "category": "Camera",
         "name": "Sony FX3",
+        "description":"",
         "price": "$3,999.00",
+        "brand":"",
+        "category": "Camera",
+        "inStock":false,
+        "mainImage": "/img/products/FX3.png",
         "images": [
-            "/img/products/FX3.png"
-        ]
+            {
+              "color": "White",
+              "colorCode": "#FFFFFF",
+              "image":""
+            },
+            {
+              "color": "Gray",
+              "colorCode": "#808080",
+              "image":""
+            }
+          ],
+          "reviews": []
+    
     },
     {
         "id": "2",
+        "name": "Sony FX5 ",
+        "description":"",
+        "price": "$3,999.00",
+        "brand":"",
         "category": "Camera",
-        "name": "Sony A7S III",
-        "price": "$3,499.00",
+        "inStock":false,
+        "mainImage": "/img/products/FX3.png",
         "images": [
-            "/img/products/7SIII.png"
+            {
+              "color": "White",
+              "colorCode": "#FFFFFF",
+              "image":""
+            },
+            {
+              "color": "Gray",
+              "colorCode": "#808080",
+              "image":""
+            }
+          ],
+          "reviews": [
+            {
+                "id": "64a65a6158b470c6e06959ee",
+                "userId": "6475af156bad4917456e6e1e",
+                "productId": "64a4ebe300900d44bb50628a",
+                "rating": 5,
+                "comment": "good",
+                "createdDate": "2023-07-06T06:08:33.067Z",
+                "user": {
+                    "id": "6475af156bad4917456e6e1e",
+                    "name": "Charles",
+                    "email": "example@gmail.com",
+                    "emailVerified": null,
+                    "image": "",
+                    "hashedPassword": null,
+                    "createdAt": "2023-05-30T08:08:53.979Z",
+                    "updatedAt": "2023-05-30T08:08:53.979Z",
+                    "role": "ADMIN"
+                }
+            }
         ]
+
     },
     {
         "id": "3",
+        "name": "Sony FX3",
+        "description":"",
+        "price": "$3,999.00",
+        "brand":"",
         "category": "Camera",
-        "name": "Sony A7C",
-        "price": "$1,599.00",
+        "inStock":false,
+        "mainImage": "/img/products/FX3.png",
         "images": [
-            "/img/products/7C.png"
-        ]
+            {
+              "color": "White",
+              "colorCode": "#FFFFFF",
+              "image":""
+            },
+            {
+              "color": "Gray",
+              "colorCode": "#808080",
+              "image":""
+            }
+          ],
+          "reviews": []
     },
     {
         "id": "4",
+        "name": "Sony FX3",
+        "description":"",
+        "price": "$3,999.00",
+        "brand":"",
         "category": "Camera",
-        "name": "Sony A7 IV",
-        "price": "$2,399.00",
+        "inStock":false,
+        "mainImage": "/img/products/FX3.png",
         "images": [
-            "/img/products/7IV.png"
-        ]
+            {
+              "color": "White",
+              "colorCode": "#FFFFFF",
+              "image":""
+            },
+            {
+              "color": "Gray",
+              "colorCode": "#808080",
+              "image":""
+            }
+          ],
+          "reviews": []
     },
     {
         "id": "5",
+        "name": "Sony FX3",
+        "description":"",
+        "price": "$3,999.00",
+        "brand":"",
         "category": "Camera",
-        "name": "Sony A7R III",
-        "price": "$2,499.00",
+        "inStock":false,
+        "mainImage": "/img/products/7RIII.png",
         "images": [
-            "/img/products/7RIII.png"
-        ]
+            {
+              "color": "White",
+              "colorCode": "#FFFFFF",
+              "image":""
+            },
+            {
+              "color": "Gray",
+              "colorCode": "#808080",
+              "image":""
+            }
+          ],
+          "reviews": []
     },
     {
         "id": "6",
+        "name": "Sony FX3",
+        "description":"",
+        "price": "$3,999.00",
+        "brand":"",
         "category": "Camera",
-        "name": "Sony A7R V",
-        "price": "$3,899.00",
+        "inStock":false,
+        "mainImage": "/img/products/FX3.png",
         "images": [
-            "/img/products/7RV.png"
-        ]
+            {
+              "color": "White",
+              "colorCode": "#FFFFFF",
+              "image":""
+            },
+            {
+              "color": "Gray",
+              "colorCode": "#808080",
+              "image":""
+            }
+          ],
+          "reviews": []
     },
     {
         "id": "7",
+        "name": "Sony FX3",
+        "description":"",
+        "price": "$3,999.00",
+        "brand":"",
         "category": "Camera",
-        "name": "Sony A6700",
-        "price": "$1,799.00",
+        "inStock":false,
+        "mainImage": "/img/products/FX3.png",
         "images": [
-            "/img/products/6700.png"
-        ]
+            {
+              "color": "White",
+              "colorCode": "#FFFFFF",
+              "image":""
+            },
+            {
+              "color": "Gray",
+              "colorCode": "#808080",
+              "image":""
+            }
+          ],
+          "reviews": []
     },
     {
         "id": "8",
+        "name": "Sony FX3",
+        "description":"",
+        "price": "$3,999.00",
+        "brand":"",
         "category": "Camera",
-        "name": "Sony AZV-E10",
-        "price": "$699.00",
+        "inStock":false,
+        "mainImage": "/img/products/7RIII.png",
         "images": [
-            "/img/products/ZVE10.png"
-        ]
+            {
+              "color": "White",
+              "colorCode": "#FFFFFF",
+              "image":""
+            },
+            {
+              "color": "Gray",
+              "colorCode": "#808080",
+              "image":""
+            }
+          ],
+          "reviews": []
     }
 ]
