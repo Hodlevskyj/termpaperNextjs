@@ -3,14 +3,14 @@ import Container from '@/components/ui/container';
 import { product } from '@/utils/product';
 import React from 'react'
 
-interface ProdID{
+interface IProdID{
     productId?:string;
 }
 
-const ProductId=({params}:{params:ProdID})=>{
+const ProductId=({params}:{params:IProdID})=>{
     return(
         <Container>
-            <h1><ProductDetails product={product}/></h1>
+            <ProductDetails product={product}/>
         </Container>
     )
 }
