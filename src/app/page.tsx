@@ -30,7 +30,7 @@ export default function Home() {
         <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
           <ProductList items={products} />
         </div>
-        <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
+        {/* <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8"> */}
           {/* className="grid grid-cols-2 sm:grid-cols-3
           lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6
           gap:8" */}
@@ -40,7 +40,7 @@ export default function Home() {
               <ProductCard data={product}/> 
             </div>
           })} */}
-        </div>
+        {/* </div> */}
       </div>
     </Container>
   );
