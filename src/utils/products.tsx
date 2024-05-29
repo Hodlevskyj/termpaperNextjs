@@ -9,14 +9,10 @@ export const products = [
         inStock: true,
         images: [
             {
-                color: "White",
-                colorCode: "#FFFFFF",
                 image:
                     "/img/products/FX3.png",
             },
             {
-                color: "Gray",
-                colorCode: "#808080",
                 image:
                     "/img/products/FX3.png",
             },
@@ -34,8 +30,6 @@ export const products = [
         inStock: true,
         images: [
             {
-                color: "Black",
-                colorCode: "#000000",
                 image:
                     "/img/products/FX3.png",
             },
@@ -74,20 +68,14 @@ export const products = [
         inStock: true,
         images: [
             {
-                color: "Black",
-                colorCode: "#000000",
                 image:
                     "/img/products/FX3.png",
             },
             {
-                color: "Blue",
-                colorCode: " #0000FF",
                 image:
                     "/img/products/FX3.png",
             },
             {
-                color: "Red",
-                colorCode: "#FF0000",
                 image:
                     "/img/products/FX3.png",
             },
@@ -147,8 +135,6 @@ export const products = [
         inStock: true,
         images: [
             {
-                color: "Graphite",
-                colorCode: " #383838",
                 image:
                     "/img/products/FX3.png",
             },
@@ -166,14 +152,10 @@ export const products = [
         inStock: true,
         images: [
             {
-                color: "Black",
-                colorCode: "#000000",
                 image:
                     "/img/products/FX3.png",
             },
             {
-                color: "Silver",
-                colorCode: "#C0C0C0",
                 image:
                     "/img/products/FX3.png",
             },
