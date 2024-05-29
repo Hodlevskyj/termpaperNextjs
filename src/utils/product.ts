@@ -9,20 +9,14 @@ export const product = {
     inStock: true,
     images: [
         {
-            color: "Black",
-            colorCode: "#000000",
+            image:
+                "/img/products/7RV.png",
+        },
+        {
             image:
                 "/img/products/FX3.png",
         },
         {
-            color: "Blue",
-            colorCode: " #0000FF",
-            image:
-                "/img/products/FX3.png",
-        },
-        {
-            color: "Red",
-            colorCode: "#FF0000",
             image:
                 "/img/products/FX3.png",
         },

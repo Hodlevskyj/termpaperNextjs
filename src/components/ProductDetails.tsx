@@ -4,7 +4,7 @@ import Container from './ui/container';
 import { Rating } from '@mui/material';
 import HorizontalLine from './ui/HorizontalLine';
 import SetColor from './SetColor';
-import { Product, ColorAndProductImgs } from "../types/product";
+import { Product } from "../types/product";
 import { product } from '@/utils/product';
 import SetQuantity from './SetQuantity';
 // import Button from './Button';
@@ -73,8 +73,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   return (
     <Container>
       {/* <div className='grid grid-cols-1 md:grid-cols-2 gap-8 p-4 sm:p-6 lg:p-8 rounded-lg overflow-hidden'> */}
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-4'>
-        <CustomCarousel />
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4'>
+        <CustomCarousel cartProduct={cartProduct} product={product} handleColorSelect={handleColorSelect}/>
         <div className='flex flex-col gap-1 text-slate-500 text-sm'>
           <h2 className='text-3xl font-medium text-slate-700'>{product.name}</h2>
           <div className='flex items-center gap-3'>
@@ -98,17 +98,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
             {product.inStock ? "In stock" : "Out of stock"}
           </div>
           <HorizontalLine />
-          <SetColor
-            cartProduct={cartProduct}
-            images={product.images}
-            handleColorSelect={handleColorSelect}
-          />
-          <HorizontalLine />
           <SetQuantity
             cartProduct={cartProduct}
             handleQtyIncrease={handleQtyIncrease}
             handleQtyDecrease={handleQtyDecrease}
-
           />
           <HorizontalLine />
           <div>

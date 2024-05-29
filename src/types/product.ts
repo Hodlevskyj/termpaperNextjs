@@ -1,8 +1,8 @@
-export interface ColorAndProductImgs{
-    color:string;
-    colorCode:string;
-    image:string;
-}
+// export interface ColorAndProductImgs{
+//     color:string;
+//     colorCode:string;
+//     image:string;
+// }
 export interface Product {
     id: string;
     name: string;
@@ -12,7 +12,7 @@ export interface Product {
     category: string;
     inStock: boolean;
     mainImage: string;
-    images: ColorAndProductImgs;
+    images: string;
     reviews: { }[];
     quantity:number;
   }
