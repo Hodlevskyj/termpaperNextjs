@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import Container from './ui/container';
 import { Rating } from '@mui/material';
 import HorizontalLine from './ui/HorizontalLine';
-import SetColor from './SetColor';
+// import SetColor from './SetColor';
 import { Product } from "../types/product";
 import { product } from '@/utils/product';
 import SetQuantity from './SetQuantity';
