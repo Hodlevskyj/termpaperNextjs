@@ -9,16 +9,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { CartProductType, SelectedImgType } from "./ProductDetails"
+import { CartProductType} from "./ProductDetails"
 import { product } from "@/utils/product";
 
 interface ProductImageProps {
   cartProduct: CartProductType,
   product: any,
-  handleColorSelect: (value: SelectedImgType) => void;
+  // handleColorSelect: (value: SelectedImgType) => void;
 }
 
-const CustomCarousel: React.FC<ProductImageProps> = ({ cartProduct, product, handleColorSelect }) => {
+// const CustomCarousel: React.FC<ProductImageProps> = ({ cartProduct, product, handleColorSelect }) => {
+const CustomCarousel: React.FC<ProductImageProps> = ({ cartProduct, product}) => {
   return (
     <div className="ml-4">
       <Carousel className="grid grid-cols-1">
@@ -36,7 +37,8 @@ const CustomCarousel: React.FC<ProductImageProps> = ({ cartProduct, product, han
                         <Image src={image.image} alt={image.color} fill className="object-contain" />
                       </div>
                     })} */}
-                    <Image src={cartProduct.selectedImg.image} alt={cartProduct.name} fill className="w-full h-full object-contain"/>
+                    {/* <Image src={cartProduct.selectedImg.image} alt={cartProduct.name} fill className="w-full h-full object-contain"/> */}
+                    <Image src={cartProduct.selectedImg} alt={cartProduct.name} fill className="w-full h-full object-contain"/>
                   </CardContent>
                 </Card>
               </div>
