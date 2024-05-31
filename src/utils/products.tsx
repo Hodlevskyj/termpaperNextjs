@@ -9,29 +9,27 @@ export const products = [
         inStock: true,
         images: [
             {
-                image:
-                    "/img/products/FX3.png",
+                image: "/img/products/FX3.png",
             },
             {
-                image:
-                    "/img/products/FX3.png",
+                image: "/img/products/FX3.png",
             },
         ],
         reviews: [],
+        mainImage: "/img/products/FX3.png", 
+        quantity: 10, 
     },
     {
         id: "64a4ebe300900d44bb50628a",
         name: "Logitech MX Keys Advanced Wireless Illuminated Keyboard, Tactile Responsive Typing, Backlighting, Bluetooth, USB-C, Apple macOS, Microsoft Windows, Linux, iOS, Android, Metal Build (Black)",
-        description:
-            "PERFECT STROKE KEYS - Spherically-dished keys match the shape of your fingertips, offering satisfying feedback with every tap\nCOMFORT AND STABILITY - Type with confidence on a keyboard crafted for comfort, stability, and precision",
+        description: "PERFECT STROKE KEYS - Spherically-dished keys match the shape of your fingertips, offering satisfying feedback with every tap\nCOMFORT AND STABILITY - Type with confidence on a keyboard crafted for comfort, stability, and precision",
         price: 102.99,
         brand: "logitech",
         category: "Accesories",
         inStock: true,
         images: [
             {
-                image:
-                    "/img/products/FX3.png",
+                image: "/img/products/FX3.png",
             },
         ],
         reviews: [
@@ -47,8 +45,7 @@ export const products = [
                     name: "Charles",
                     email: "example@gmail.com",
                     emailVerified: null,
-                    image:
-                        "",
+                    image: "",
                     hashedPassword: null,
                     createdAt: "2023-05-30T08:08:53.979Z",
                     updatedAt: "2023-05-30T08:08:53.979Z",
@@ -56,28 +53,26 @@ export const products = [
                 },
             },
         ],
+        mainImage: "/img/products/FX3.png", 
+        quantity: 5, 
     },
     {
         id: "648437b38c44d52b9542e340",
         name: "Apple iPhone 13, 64GB",
-        description:
-            'The product is refurbished, fully functional, and in excellent condition. Backed by the 90-day E~Shop Renewed Guarantee.\n- This pre-owned product has been professionally inspected, tested and cleaned by Amazon qualified vendors. It is not certified by Apple.\n- This product is in "Excellent condition". The screen and body show no signs of cosmetic damage visible from 12 inches away.\n- This product will have a battery that exceeds 80% capacity relative to new.\n- Accessories may not be original, but will be compatible and fully functional. Product may come in generic box.\n- Product will come with a SIM removal tool, a charger and a charging cable. Headphone and SIM card are not included.\n- This product is eligible for a replacement or refund within 90-day of receipt if it does not work as expected.\n- Refurbished phones are not guaranteed to be waterproof.',
+        description: "The product is refurbished, fully functional, and in excellent condition. Backed by the 90-day E~Shop Renewed Guarantee.\n- This pre-owned product has been professionally inspected, tested and cleaned by Amazon qualified vendors. It is not certified by Apple.\n- This product is in \"Excellent condition\". The screen and body show no signs of cosmetic damage visible from 12 inches away.\n- This product will have a battery that exceeds 80% capacity relative to new.\n- Accessories may not be original, but will be compatible and fully functional. Product may come in generic box.\n- Product will come with a SIM removal tool, a charger and a charging cable. Headphone and SIM card are not included.\n- This product is eligible for a replacement or refund within 90-day of receipt if it does not work as expected.\n- Refurbished phones are not guaranteed to be waterproof.",
         price: 40,
         brand: "Apple",
         category: "Phone",
         inStock: true,
         images: [
             {
-                image:
-                    "/img/products/FX3.png",
+                image: "/img/products/FX3.png",
             },
             {
-                image:
-                    "/img/products/FX3.png",
+                image: "/img/products/FX3.png",
             },
             {
-                image:
-                    "/img/products/FX3.png",
+                image: "/img/products/FX3.png",
             },
         ],
         reviews: [
@@ -86,16 +81,14 @@ export const products = [
                 userId: "6499b184b0e9a8c8709821d3",
                 productId: "648437b38c44d52b9542e340",
                 rating: 4,
-                comment:
-                    "good enough. I like the camera and casing. the delivery was fast too.",
+                comment: "good enough. I like the camera and casing. the delivery was fast too.",
                 createdDate: "2023-06-26T15:53:44.483Z",
                 user: {
                     id: "6499b184b0e9a8c8709821d3",
                     name: "Chaoo",
                     email: "example1@gmail.com",
                     emailVerified: null,
-                    image:
-                        "",
+                    image: "",
                     hashedPassword: null,
                     createdAt: "2023-06-26T15:40:52.558Z",
                     updatedAt: "2023-06-26T15:40:52.558Z",
@@ -114,8 +107,7 @@ export const products = [
                     name: "Charles",
                     email: "example@gmail.com",
                     emailVerified: null,
-                    image:
-                        "",
+                    image: "",
                     hashedPassword: null,
                     createdAt: "2023-05-30T08:08:53.979Z",
                     updatedAt: "2023-05-30T08:08:53.979Z",
@@ -123,43 +115,44 @@ export const products = [
                 },
             },
         ],
+        mainImage: "/img/products/FX3.png",
+        quantity: 7, 
     },
     {
         id: "64a4e9e77e7299078334019f",
         name: "Logitech MX Master 2S Wireless Mouse – Use on Any Surface, Hyper-Fast Scrolling, Ergonomic Shape, Rechargeable, Control Upto 3 Apple Mac and Windows Computers, Graphite",
-        description:
-            "Cross computer control: Game changing capacity to navigate seamlessly on 3 computers, and copy paste text, images, and files from 1 to the other using Logitech flow\nDual connectivity: Use with upto 3 Windows or Mac computers via included Unifying receiver or Bluetooth Smart wireless technology. Gesture button- Yes",
+        description: "Cross computer control: Game changing capacity to navigate seamlessly on 3 computers, and copy paste text, images, and files from 1 to the other using Logitech flow\nDual connectivity: Use with upto 3 Windows or Mac computers via included Unifying receiver or Bluetooth Smart wireless technology. Gesture button- Yes",
         price: 70,
         brand: "logitech",
         category: "Accesories",
         inStock: true,
         images: [
             {
-                image:
-                    "/img/products/FX3.png",
+                image: "/img/products/FX3.png",
             },
         ],
         reviews: [],
+        mainImage: "/img/products/FX3.png", 
+        quantity: 15, 
     },
     {
         id: "649d775128b6744f0f497040",
         name: 'Smart Watch(Answer/Make Call), 1.85" Smartwatch for Men Women IP68 Waterproof, 100+ Sport Modes, Fitness Activity Tracker, Heart Rate Sleep Monitor, Pedometer, Smart Watches for Android iOS, 2023',
-        description:
-            'Bluetooth Call and Message Reminder: The smart watch is equipped with HD speaker, after connecting to your phone via Bluetooth, you can directly use the smartwatches to answer or make calls, read messages, store contacts, view call history. The smartwatch can set up more message notifications in "GloryFit" APP. You will never miss any calls and messages during meetings, workout and riding.',
+        description: "Bluetooth Call and Message Reminder: The smart watch is equipped with HD speaker, after connecting to your phone via Bluetooth, you can directly use the smartwatches to answer or make calls, read messages, store contacts, view call history. The smartwatch can set up more message notifications in \"GloryFit\" APP. You will never miss any calls and messages during meetings, workout and riding.",
         price: 50,
         brand: "Nerunsa",
         category: "Watch",
         inStock: true,
         images: [
             {
-                image:
-                    "/img/products/FX3.png",
+                image: "/img/products/FX3.png",
             },
             {
-                image:
-                    "/img/products/FX3.png",
+                image: "/img/products/FX3.png",
             },
         ],
         reviews: [],
+        mainImage: "/img/products/FX3.png", 
+        quantity: 20,
     },
 ];
