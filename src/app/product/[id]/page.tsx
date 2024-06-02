@@ -1,14 +1,15 @@
 import ProductDetails from '@/components/ProductDetails';
 import Container from '@/components/ui/container';
-import { product } from '@/utils/product';
 import React from 'react'
 import ListOfRating from './ListOfRating';
+import { products } from '@/utils/products';
 
 interface IProdID {
     productId?: string;
 }
 
 const ProductId = ({ params }: { params: IProdID }) => {
+    const product=products.find((item)=>item.id === params.productId)
     return (
         <Container>
             <ProductDetails product={product} />

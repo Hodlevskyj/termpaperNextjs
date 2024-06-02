@@ -7,11 +7,15 @@ import { Button } from "./ui/button"
 import { Menu, Moon, ShoppingCart, Sun } from "lucide-react";
 import ProfileButton from "./ui/ProfileButton"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useRouter } from "next/navigation"
+import { useCart } from "../../hooks/useCart"
 
 
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
+  const router = useRouter();
+  const { cartTotalQty } = useCart();
   const routes = [
     {
       href: "/products",
@@ -75,9 +79,17 @@ const Header = () => {
               size="icon"
               className="mr-2"
               aria-label="Shopping Cart"
+              onClick={() => router.push('/cart')}
             >
-              <ShoppingCart className="h-6 w-6"></ShoppingCart>
-              <span className="sr-only">Shopping Cart</span>
+              <div>
+                {/* <ShoppingCart className="h-6 w-6"></ShoppingCart> */}
+                <ShoppingCart></ShoppingCart>
+              </div>
+              {/* <span className="sr-only">Shopping Cart</span> */}
+              {/* <span className="absolute top-[-10px] right-15px bg-slate-700 text-white h-6 w-6 rounded-full flex items-center justify-center text-sm">{cartTotalQty}</span> */}
+              <span className="absolute top-[1.5px] right-[138px] bg-gray-400 text-white h-6 w-6 rounded-full flex items-center justify-center text-sm">
+                {cartTotalQty}
+              </span>
             </Button>
             <Button
               variant="ghost"

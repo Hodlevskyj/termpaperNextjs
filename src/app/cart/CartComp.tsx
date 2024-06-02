@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { IoArrowBackOutline } from "react-icons/io5";
 import { Button } from "@/components/ui/button"
 import HorizontalLine from '@/components/ui/HorizontalLine';
+import CartContent from './CartContent';
+import { priceFormat } from '@/utils/priceFormat';
 
 
 const CartComp = () => {
-    const { cartProducts } = useCart();
+    const { cartProducts,handleClearCart,cartTotalAmount } = useCart();
     if (!cartProducts || cartProducts.length === 0) {
         return (
             <div className='flex flex-col items-center'>
@@ -36,7 +38,7 @@ const CartComp = () => {
             <div>
                 {cartProducts && cartProducts.map((item) => {
                     return (
-                        <div key={item.id}>{item.name}</div>
+                        <CartContent key={item.id} item={item}/>
                     )
                 })}
             </div>
@@ -44,11 +46,11 @@ const CartComp = () => {
             <div className='border-t-[3.5px] border-purple-200 py-4 flex justify-between gap-4'>
                 {/* <HorizontalLine /> */}
                 <div>
-                    <Button variant="outline" onClick={() => { }}>Clear Cart</Button>
+                    <Button variant="outline" onClick={() => {handleClearCart()}}>Clear Cart</Button>
                 </div>
                 <div>
                     <div className="font-bold">
-                        <p> $100</p>
+                        <p>{priceFormat(cartTotalAmount)}</p>
                     </div>
                     <div>
                         <Button onClick={() => { }} className='gap-4 px-8 py-4 text-lg'>Order</Button>
