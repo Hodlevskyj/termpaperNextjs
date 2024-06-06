@@ -8,7 +8,6 @@ const Login = () => {
     <Container>
         <FormWraper>
             <LoginForm>
-                
             </LoginForm>
         </FormWraper>
       

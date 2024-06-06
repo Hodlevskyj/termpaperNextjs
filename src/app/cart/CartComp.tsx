@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 import React from 'react'
 import { useCart } from '../../../hooks/useCart'
 import Link from 'next/link';

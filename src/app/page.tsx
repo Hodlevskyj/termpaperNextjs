@@ -3,34 +3,41 @@ import { Button } from "@/components/ui/button";
 import { ShoppingBag } from "lucide-react";
 import ProductList from "@/components/ProductList";
 // import products from "../../products.json"
-import {products} from "../utils/products"
+import { products } from "../utils/products"
 import { reduceText } from "@/utils/reduceText";
 import ProductCard from "@/components/ui/ProductCard";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../libs/AuthOptions";
+import { SessionProvider } from "next-auth/react";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+  console.log(session);
   return (
-    <Container>
-      <div className="space-y-10 pb-10">
-        <div className="p-4 sm:p-6 lg:p-8 rounded-lg overflow-hidden">
-          <div
-            style={{ backgroundImage: `url(/img/hero.jpg)` }}
-            className="rounded-lg relative aspect-square md:aspect-[2.4/1] overflow-hidden bg-cover"
-          >
-            <div className="h-full w-full flex flex-col justify-center items-center text-center gap-y-8">
-              <div className="font-bold text-3xl sm:text-5xl lg:text-6xl sm:max-w-xl max-w-xs text-black dark:text-white bg-secondary/60 p-4 rounded-lg">
-                Featured Products
-                <Button size="lg" className="w-full py-6 text-xl">
-                  <ShoppingBag className="mr-2" />
-                  Shop Now
-                </Button>
+    <>
+      <div>Hello user - {session?.user?.email}</div>
+      <Container>
+        <div className="space-y-10 pb-10">
+          <div className="p-4 sm:p-6 lg:p-8 rounded-lg overflow-hidden">
+            <div
+              style={{ backgroundImage: `url(/img/hero.jpg)` }}
+              className="rounded-lg relative aspect-square md:aspect-[2.4/1] overflow-hidden bg-cover"
+            >
+              <div className="h-full w-full flex flex-col justify-center items-center text-center gap-y-8">
+                <div className="font-bold text-3xl sm:text-5xl lg:text-6xl sm:max-w-xl max-w-xs text-black dark:text-white bg-secondary/60 p-4 rounded-lg">
+                  Featured Products
+                  <Button size="lg" className="w-full py-6 text-xl">
+                    <ShoppingBag className="mr-2" />
+                    Shop Now
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
-          <ProductList items={products} />
-        </div>
-        {/* <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8"> */}
+          <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
+            <ProductList items={products} />
+          </div>
+          {/* <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8"> */}
           {/* className="grid grid-cols-2 sm:grid-cols-3
           lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6
           gap:8" */}
@@ -40,8 +47,9 @@ export default function Home() {
               <ProductCard data={product}/> 
             </div>
           })} */}
-        {/* </div> */}
-      </div>
-    </Container>
+          {/* </div> */}
+        </div>
+      </Container>
+    </>
   );
 }

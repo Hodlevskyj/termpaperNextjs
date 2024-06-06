@@ -1,3 +1,5 @@
+"use client"
+
 import { CartProductType } from "@/components/ProductDetails";
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import toast from 'react-hot-toast';
@@ -25,8 +27,8 @@ export const CartContextProvider = (props: Props) => {
     const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(null);
     const [cartTotalAmount, setCartTotalAmount] = useState(0)
 
-    console.log('qty',cartTotalQty)
-    console.log('amount',cartTotalAmount)
+    // console.log('qty',cartTotalQty)
+    // console.log('amount',cartTotalAmount)
     useEffect(() => {
         const cartItems: any = localStorage.getItem('cartItems')
         const cProducts: CartContextType[] | null = JSON.parse(cartItems)
