@@ -1,61 +1,228 @@
+// "use client"
+
+// import { CartProductType } from "@/components/ProductDetails";
+// import { createContext, useCallback, useContext, useEffect, useState } from "react";
+// import toast from 'react-hot-toast';
+
+// type CartContextType = {
+//     cartTotalQty: number;
+//     cartTotalAmount:number;
+//     cartProducts: CartProductType[] | null;
+//     handleAddItemToCart: (product: CartProductType) => void
+//     handleRemoveItemFromCart: (product: CartProductType) => void
+//     handleCartQtyIncrease: (product: CartProductType) => void
+//     handleCartQtyDecrease: (product: CartProductType) => void
+//     handleClearCart: () => void
+//     paymentIntent:string | null;
+//     handleSetPaymentIntent:(value:string | null) => void
+// }
+
+// interface Props {
+//     [propName: string]: any;
+// }
+
+// export const CartContext = createContext<CartContextType | null>(null)
+
+
+// export const CartContextProvider = (props: Props) => {
+//     const [cartTotalQty, setCartTotalQty] = useState(0);
+//     const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(null);
+//     const [cartTotalAmount, setCartTotalAmount] = useState(0)
+
+//     const [paymentIntent,setPaymentIntent] = useState<string | null>(null)
+//     // console.log('qty',cartTotalQty)
+//     // console.log('amount',cartTotalAmount)
+//     useEffect(() => {
+//         const cartItems: any = localStorage.getItem('cartItems')
+//         const cProducts: CartContextType[] | null = JSON.parse(cartItems)
+//         const ShopPaymentIntent:any=localStorage.getItem('ShopPaymentIntent');
+//         const paymentIntent:string | null = JSON.parse(ShopPaymentIntent)
+        
+//         setCartProducts(cProducts);
+//         setPaymentIntent(paymentIntent);
+//     }, []);
+
+//     useEffect(() => {
+//         const getTotals = () => {
+//             if (cartProducts) {
+//                 const { total, qty } = cartProducts?.reduce((acc, item) => {
+//                     const itemTotal = item.price * item.quantity
+//                     acc.total += itemTotal
+//                     acc.qty += item.quantity
+//                     return acc
+//                 }, {
+//                     total: 0,
+//                     qty: 0
+//                 })
+//                 setCartTotalQty(qty);
+//                 setCartTotalAmount(total);
+
+//             }
+
+//         }
+//         getTotals()
+//     }, [cartProducts])
+
+
+//     const handleAddItemToCart = useCallback((product: CartProductType) => {
+//         setCartProducts((prev) => {
+//             let updatedCart;
+//             if (prev) {
+//                 updatedCart = [...prev, product];
+//             } else {
+//                 updatedCart = [product];
+//             }
+//             toast.success('Product added to cart')
+//             localStorage.setItem('cartItems', JSON.stringify(updatedCart))
+//             return updatedCart;
+//         })
+//     }, []);
+
+//     const handleRemoveItemFromCart = useCallback((product: CartProductType) => {
+//         if (cartProducts) {
+//             const filteredProducts = cartProducts.filter((item) => {
+//                 return item.id !== product.id
+//             })
+//             setCartProducts(filteredProducts)
+//             toast.success('Product removed from cart')
+//             localStorage.setItem('cartItems', JSON.stringify(filteredProducts))
+//         }
+//     }, [cartProducts]);
+
+//     const handleCartQtyIncrease = useCallback((product: CartProductType) => {
+//         let updatedCart;
+//         if (product.quantity === 30) {
+//             return toast.error('The maximum quantity is 30')
+//         }
+//         if (cartProducts) {
+//             updatedCart = [...cartProducts]
+//             const existingIndex = cartProducts.findIndex((item) => item.id === product.id)
+
+//             if (existingIndex > -1) {
+//                 updatedCart[existingIndex].quantity = ++updatedCart[existingIndex].quantity
+//             }
+//             setCartProducts(updatedCart)
+//             localStorage.setItem('cartItems', JSON.stringify(updatedCart))
+//         }
+//     }, [cartProducts])
+
+//     const handleCartQtyDecrease = useCallback((product: CartProductType) => {
+//         let updatedCart;
+//         if (product.quantity === 1) {
+//             return toast.error('The maximum quantity is 1')
+//         }
+//         if (cartProducts) {
+//             updatedCart = [...cartProducts]
+//             const existingIndex = cartProducts.findIndex((item) => item.id === product.id)
+
+//             if (existingIndex > -1) {
+//                 updatedCart[existingIndex].quantity = --updatedCart[existingIndex].quantity;
+//             }
+//             setCartProducts(updatedCart);
+//             localStorage.setItem('cartItems', JSON.stringify(updatedCart))
+
+
+//         }
+//     }, [cartProducts])
+
+
+//     const handleClearCart = useCallback(() => {
+//         setCartProducts(null)
+//         setCartTotalQty(0)
+//         localStorage.setItem('cartItems', JSON.stringify(null))
+//     }, [cartProducts])
+
+//     const handleSetPaymentIntent = useCallback((value:string | null)=>{
+//         setPaymentIntent(value)
+//         localStorage.setItem('ShopPaymentIntent',JSON.stringify(value));
+//     },[paymentIntent])
+
+
+//     const value = { 
+//         cartTotalQty, 
+//         cartProducts, 
+//         cartTotalAmount,
+//         handleAddItemToCart, 
+//         handleRemoveItemFromCart, 
+//         handleCartQtyIncrease, 
+//         handleCartQtyDecrease, 
+//         handleClearCart,
+//         paymentIntent,
+//         handleSetPaymentIntent
+//     }
+
+//     return <CartContext.Provider value={value} {...props} />
+// }
+
+// export const useCart = () => {
+//     const context = useContext(CartContext);
+
+//     if (context === null) {
+//         throw new Error("useCart must be used with cartContextProvider")
+//     }
+//     return context;
+// }
+
 "use client"
 
 import { CartProductType } from "@/components/ProductDetails";
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
-import toast from 'react-hot-toast';
+import {toast} from 'react-hot-toast';
 
 type CartContextType = {
     cartTotalQty: number;
-    cartTotalAmount:number;
+    cartTotalAmount: number;
     cartProducts: CartProductType[] | null;
-    handleAddItemToCart: (product: CartProductType) => void
-    handleRemoveItemFromCart: (product: CartProductType) => void
-    handleCartQtyIncrease: (product: CartProductType) => void
-    handleCartQtyDecrease: (product: CartProductType) => void
-    handleClearCart: () => void
+    handleAddItemToCart: (product: CartProductType) => void;
+    handleRemoveItemFromCart: (product: CartProductType) => void;
+    handleCartQtyIncrease: (product: CartProductType) => void;
+    handleCartQtyDecrease: (product: CartProductType) => void;
+    handleClearCart: () => void;
+    paymentIntent: string | null;
+    handleSetPaymentIntent: (value: string | null) => void;
 }
 
 interface Props {
     [propName: string]: any;
 }
 
-export const CartContext = createContext<CartContextType | null>(null)
-
+export const CartContext = createContext<CartContextType | null>(null);
 
 export const CartContextProvider = (props: Props) => {
     const [cartTotalQty, setCartTotalQty] = useState(0);
     const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(null);
-    const [cartTotalAmount, setCartTotalAmount] = useState(0)
+    const [cartTotalAmount, setCartTotalAmount] = useState(0);
 
-    // console.log('qty',cartTotalQty)
-    // console.log('amount',cartTotalAmount)
+    const [paymentIntent, setPaymentIntent] = useState<string | null>(null);
+
     useEffect(() => {
-        const cartItems: any = localStorage.getItem('cartItems')
-        const cProducts: CartContextType[] | null = JSON.parse(cartItems)
-        setCartProducts(cartProducts)
+        const cartItems: any = localStorage.getItem('cartItems');
+        const cProducts: CartProductType[] | null = JSON.parse(cartItems);
+        const ShopPaymentIntent: any = localStorage.getItem('ShopPaymentIntent');
+        const paymentIntent: string | null = JSON.parse(ShopPaymentIntent);
+
+        setCartProducts(cProducts);
+        setPaymentIntent(paymentIntent);
     }, []);
 
     useEffect(() => {
         const getTotals = () => {
             if (cartProducts) {
-                const { total, qty } = cartProducts?.reduce((acc, item) => {
-                    const itemTotal = item.price * item.quantity
-                    acc.total += itemTotal
-                    acc.qty += item.quantity
-                    return acc
+                const { total, qty } = cartProducts.reduce((acc, item) => {
+                    const itemTotal = item.price * item.quantity;
+                    acc.total += itemTotal;
+                    acc.qty += item.quantity;
+                    return acc;
                 }, {
                     total: 0,
                     qty: 0
-                })
+                });
                 setCartTotalQty(qty);
                 setCartTotalAmount(total);
-
             }
-
-        }
-        getTotals()
-    }, [cartProducts])
-
+        };
+        getTotals();
+    }, [cartProducts]);
 
     const handleAddItemToCart = useCallback((product: CartProductType) => {
         setCartProducts((prev) => {
@@ -65,85 +232,93 @@ export const CartContextProvider = (props: Props) => {
             } else {
                 updatedCart = [product];
             }
-            toast.success('Product added to cart')
-            localStorage.setItem('cartItems', JSON.stringify(updatedCart))
+            toast.success('Product added to cart');
+            localStorage.setItem('cartItems', JSON.stringify(updatedCart));
             return updatedCart;
-        })
+        });
     }, []);
 
     const handleRemoveItemFromCart = useCallback((product: CartProductType) => {
         if (cartProducts) {
             const filteredProducts = cartProducts.filter((item) => {
-                return item.id !== product.id
-            })
-            setCartProducts(filteredProducts)
-            toast.success('Product removed from cart')
-            localStorage.setItem('cartItems', JSON.stringify(filteredProducts))
+                return item.id !== product.id;
+            });
+            setCartProducts(filteredProducts);
+            toast.success('Product removed from cart');
+            localStorage.setItem('cartItems', JSON.stringify(filteredProducts));
         }
     }, [cartProducts]);
 
     const handleCartQtyIncrease = useCallback((product: CartProductType) => {
         let updatedCart;
         if (product.quantity === 30) {
-            return toast.error('The maximum quantity is 30')
+            return toast.error('The maximum quantity is 30');
         }
         if (cartProducts) {
-            updatedCart = [...cartProducts]
-            const existingIndex = cartProducts.findIndex((item) => item.id === product.id)
+            updatedCart=[...cartProducts]
 
-            if (existingIndex > -1) {
+            const existingIndex = cartProducts.findIndex((item)=>item.id=== product.id);
+
+            if(existingIndex >-1){
                 updatedCart[existingIndex].quantity = ++updatedCart[existingIndex].quantity
             }
-            setCartProducts(updatedCart)
-            localStorage.setItem('cartItems', JSON.stringify(updatedCart))
+
+            setCartProducts(updatedCart);
+            localStorage.setItem('cartItems', JSON.stringify(updatedCart));
         }
-    }, [cartProducts])
+    }, [cartProducts]);
 
     const handleCartQtyDecrease = useCallback((product: CartProductType) => {
         let updatedCart;
         if (product.quantity === 1) {
-            return toast.error('The maximum quantity is 1')
+            return toast.error('The minimum quantity is 1');
         }
         if (cartProducts) {
-            updatedCart = [...cartProducts]
-            const existingIndex = cartProducts.findIndex((item) => item.id === product.id)
+            updatedCart=[...cartProducts]
 
-            if (existingIndex > -1) {
-                updatedCart[existingIndex].quantity = --updatedCart[existingIndex].quantity;
+            const existingIndex = cartProducts.findIndex((item)=>item.id=== product.id);
+
+            if(existingIndex >-1){
+                updatedCart[existingIndex].quantity = --updatedCart[existingIndex].quantity
             }
+
             setCartProducts(updatedCart);
-            localStorage.setItem('cartItems', JSON.stringify(updatedCart))
-
-
+            localStorage.setItem('cartItems', JSON.stringify(updatedCart));
         }
-    }, [cartProducts])
-
+    }, [cartProducts]);
 
     const handleClearCart = useCallback(() => {
-        setCartProducts(null)
-        setCartTotalQty(0)
-        localStorage.setItem('cartItems', JSON.stringify(null))
-    }, [cartProducts])
+        setCartProducts(null);
+        setCartTotalQty(0);
+        localStorage.setItem('cartItems', JSON.stringify(null));
+    }, [cartProducts]);
 
-    const value = { 
-        cartTotalQty, 
-        cartProducts, 
+    const handleSetPaymentIntent = useCallback((value: string | null) => {
+        setPaymentIntent(value);
+        localStorage.setItem('ShopPaymentIntent', JSON.stringify(value));
+    }, []);
+
+    const value = {
+        cartTotalQty,
+        cartProducts,
         cartTotalAmount,
-        handleAddItemToCart, 
-        handleRemoveItemFromCart, 
-        handleCartQtyIncrease, 
-        handleCartQtyDecrease, 
+        handleAddItemToCart,
+        handleRemoveItemFromCart,
+        handleCartQtyIncrease,
+        handleCartQtyDecrease,
         handleClearCart,
-    }
+        paymentIntent,
+        handleSetPaymentIntent
+    };
 
-    return <CartContext.Provider value={value} {...props} />
+    return <CartContext.Provider value={value} {...props} />;
 }
 
 export const useCart = () => {
     const context = useContext(CartContext);
 
     if (context === null) {
-        throw new Error("useCart must be used with cartContextProvider")
+        throw new Error("useCart must be used with CartContextProvider");
     }
     return context;
 }

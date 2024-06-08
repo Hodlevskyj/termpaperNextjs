@@ -5,11 +5,11 @@ import ListOfRating from './ListOfRating';
 import { products } from '@/utils/products';
 
 interface IProdID {
-    productId?: string;
+    id?: string;
 }
 
 const ProductId = ({ params }: { params: IProdID }) => {
-    const product=products.find((item)=>item.id === params.productId)
+    const product=products.find((item)=>item.id === params.id)
     return (
         <Container>
             <ProductDetails product={product} />

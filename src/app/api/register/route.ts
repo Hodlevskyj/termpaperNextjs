@@ -3,6 +3,7 @@ import prisma from '../../../../libs/prismadb'
 import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
+    
     try {
         const body = await request.json();
         const { name, email, password } = body
@@ -17,6 +18,7 @@ export async function POST(request: Request) {
                 email: email
             }
         });
+        
 
 
         if (userAlreadyExist) {
@@ -31,10 +33,13 @@ export async function POST(request: Request) {
                 hashedPassword: hashedPassword,
             }
         });
+        console.log("newUser->",newUser)
 
         return NextResponse.json(newUser);
+        
     } catch (err: any) {
         console.log("Register ERROR: ", err)
         return new NextResponse("Internal Server Error", { status: 500 });
     }
+    
 }

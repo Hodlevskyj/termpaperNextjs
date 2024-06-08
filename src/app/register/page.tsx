@@ -18,9 +18,15 @@
 
 import Register from "@/components/Register";
 import RegisterForm from "./RegisterForm";
+import Container from '@/components/ui/container'
+import FormWraper from '@/components/FormWraper'
+export default function RegisterFormPage() {
+    return (
+        <Container>
+            <FormWraper>
+                <RegisterForm />
+            </FormWraper>
 
-export default function RegisterFormPage(){
-    return(
-        <RegisterForm/>
+        </Container>
     )
 }

@@ -7,8 +7,7 @@ const Login = () => {
   return (
     <Container>
         <FormWraper>
-            <LoginForm>
-            </LoginForm>
+            <LoginForm />
         </FormWraper>
       
     </Container>

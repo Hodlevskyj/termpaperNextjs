@@ -15,7 +15,7 @@ const Inputs = ({ value, onChange, onClick, disabled, type = "text", label }: In
       <input
         value={value}
         onChange={onChange}
-        onClick={onClick} // Added onClick handler
+        onClick={onClick} 
         disabled={disabled}
         type={type}
         className='outline-none p-4 border-2 border-neutral-300'

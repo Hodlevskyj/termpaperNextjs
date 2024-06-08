@@ -33,11 +33,15 @@ export default function RootLayout({
                 color: "#fff"
               }
             }} />
-
             <CartProvider>
-              <Header />
-              {children}
-              <Footer />
+              <div className="flex flex-col min-h-screen">
+                <Header />
+                <main className="flex-grow">
+                  {children}
+                </main>
+                <Footer />
+
+              </div>
             </CartProvider>
           </NextAuthSessionProvider>
         </ThemeProvider>
