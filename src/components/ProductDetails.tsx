@@ -5,7 +5,7 @@ import { Rating } from '@mui/material';
 import HorizontalLine from './ui/HorizontalLine';
 // import SetColor from './SetColor';
 import { Product } from "../types/product";
-import { product } from '@/utils/product';
+import { products } from '@/utils/products';
 import SetQuantity from './SetQuantity';
 // import Button from './Button';
 import { Button } from "@/components/ui/button"
@@ -19,19 +19,15 @@ interface ProductDetailsProps {
   product: any;
 }
 
-// export type SelectedImgType = {
-//   color: string;
-//   colorCode: string;
-//   image: string;
-// }
-
 export type CartProductType = {
   id: string;
   name: string;
   description: string;
   category: string;
   brand: string;
-  selectedImg: string;
+  selectedImg: {
+    image:string
+  };
   quantity: number;
   price: number;
 }
@@ -46,7 +42,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     price: product.price,
     brand: product.brand,
     category: product.category,
-    selectedImg: { ...product.images[0] },
+    // selectedImg: { ...product.images[0] },
+    selectedImg: product.images[0],
     quantity: 1,
   });
 
@@ -62,22 +59,15 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         setIsProductInCart(true);
       }
     }
-  }, [cartProducts])
+  }, [cartProducts]);
 
   const productRating = product.reviews && product.reviews.length > 0
     ? product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) / product.reviews.length
     : 0;
 
-  // const handleColorSelect = useCallback((value: SelectedImgType) => {
-  //   setCartProduct((prev) => {
-  //     return { ...prev, selectedImg: value }
-  //   })
-  // }, [cartProduct.selectedImg]);
-
-
 
   const handleQtyIncrease = useCallback(() => {
-    if (cartProduct.quantity === 60) return;
+    if (cartProduct.quantity === 30) return;
     setCartProduct((prev) => {
       return { ...prev, quantity: prev.quantity + 1 }
     })
@@ -93,7 +83,6 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     <Container>
       {/* <div className='grid grid-cols-1 md:grid-cols-2 gap-8 p-4 sm:p-6 lg:p-8 rounded-lg overflow-hidden'> */}
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4'>
-        {/* <CustomCarousel cartProduct={cartProduct} product={product} handleColorSelect={handleColorSelect}/> */}
         <CustomCarousel cartProduct={cartProduct} product={product} />
         <div className='flex flex-col gap-1 text-slate-500 text-sm'>
           <h2 className='text-3xl font-medium text-slate-700'>{product.name}</h2>
@@ -140,7 +129,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                 {/* <Button 
             label="Add to Cart"
             onClick={()=>{}}/> */}
-                <Button variant="secondary" className='w-full' onClick={() => handleAddItemToCart(cartProduct)}>Add to Cart</Button>
+                <Button variant="secondary" className='w-full'
+                  onClick={() => handleAddItemToCart(cartProduct)}>
+                  Add to Cart
+                </Button>
               </div>
             </>
           )}

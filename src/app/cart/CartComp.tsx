@@ -7,10 +7,18 @@ import { Button } from "@/components/ui/button"
 import HorizontalLine from '@/components/ui/HorizontalLine';
 import CartContent from './CartContent';
 import { priceFormat } from '@/utils/priceFormat';
+import Heading from '@/components/Heading';
+import { SafeUser } from '../../../types';
+import { useRouter } from 'next/router';
+
+interface CartCompProps{
+    currentUser:SafeUser | null;
+}
 
 
-const CartComp = () => {
-    const { cartProducts,handleClearCart,cartTotalAmount } = useCart();
+const CartComp = ({currentUser}:CartCompProps) => {
+    const { cartProducts, handleClearCart, cartTotalAmount } = useCart();
+    // const router = useRouter();
     if (!cartProducts || cartProducts.length === 0) {
         return (
             <div className='flex flex-col items-center'>
@@ -26,9 +34,7 @@ const CartComp = () => {
     }
     return (
         <div>
-            <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-4xl text-center">
-                Shopping Cart
-            </h1>
+            <Heading title="Shopping Cart" center />
             <div className='grid grid-cols-5 text-xl gap-4 pb-2 pt-4 items-center'>
                 <div className='col-span-2 justify-self-start'>PRODUCT</div>
                 <div className='justify-self-center'>PRICE</div>
@@ -38,7 +44,7 @@ const CartComp = () => {
             <div>
                 {cartProducts && cartProducts.map((item) => {
                     return (
-                        <CartContent key={item.id} item={item}/>
+                        <CartContent key={item.id} item={item} />
                     )
                 })}
             </div>
@@ -46,14 +52,18 @@ const CartComp = () => {
             <div className='border-t-[3.5px] border-purple-200 py-4 flex justify-between gap-4'>
                 {/* <HorizontalLine /> */}
                 <div>
-                    <Button variant="outline" onClick={() => {handleClearCart()}}>Clear Cart</Button>
+                    <Button variant="destructive" onClick={() => { handleClearCart() }}>
+                        Clear Cart
+                    </Button>
                 </div>
                 <div>
                     <div className="font-bold">
                         <p>{priceFormat(cartTotalAmount)}</p>
                     </div>
                     <div>
-                        <Button onClick={() => { }} className='gap-4 px-8 py-4 text-lg'>Order</Button>
+                        <Button onClick={() => { }} className='gap-4 px-8 py-4 text-lg'>
+                           {currentUser ? <Link href={'/checkout'}>Order</Link> : <Link href={'/login'}>Login to order</Link>}
+                        </Button>
                         <Link href={"/"} className='text-slate-500 flex items-center gap-1 mt-2'>
                             <IoArrowBackOutline />
                             <p>Continue Shopping</p>

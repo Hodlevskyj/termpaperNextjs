@@ -9,7 +9,7 @@ export const products = [
         inStock: true,
         images: [
             {
-                image: "/img/products/FX3.png",
+                image: "/img/products/7C.png",
             },
             {
                 image: "/img/products/FX3.png",
@@ -66,7 +66,7 @@ export const products = [
         inStock: true,
         images: [
             {
-                image: "/img/products/FX3.png",
+                image: "/img/products/6700.png",
             },
             {
                 image: "/img/products/FX3.png",
@@ -128,7 +128,7 @@ export const products = [
         inStock: true,
         images: [
             {
-                image: "/img/products/FX3.png",
+                image: "/img/products/ZVE10.png",
             },
         ],
         reviews: [],
@@ -145,7 +145,7 @@ export const products = [
         inStock: true,
         images: [
             {
-                image: "/img/products/FX3.png",
+                image: "/img/products/7SIII.png",
             },
             {
                 image: "/img/products/FX3.png",

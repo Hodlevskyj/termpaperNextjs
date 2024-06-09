@@ -18,7 +18,7 @@ export const product = {
         },
         {
             image:
-                "/img/products/FX3.png",
+                "/img/products/7RIII.png",
         },
     ],
     reviews: [

@@ -6,6 +6,8 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import CartProvider from "../../providers/CartProvider";
 import { Toaster } from 'react-hot-toast';
+import NextAuthSessionProvider from "../../providers/NextAuthSessionProvider";
+import ToastProvider from "../../providers/ToastProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,19 +24,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Toaster toastOptions={{
-            style:{
-              background:'rgb(51 65 85)',
-              color:"#fff"
-            }
-          }}/>
-          <CartProvider>
-            <Header />
-            {children}
-            <Footer />
-          </CartProvider>
+          <NextAuthSessionProvider>
+            <Toaster toastOptions={{
+              style: {
+                background: 'rgb(51 65 85)',
+                color: "#fff"
+              }
+            }} />
+            <CartProvider>
+              <div className="flex flex-col min-h-screen">
+                <Header />
+                <main className="flex-grow">
+                  {children}
+                </main>
+                <Footer />
+
+              </div>
+            </CartProvider>
+          </NextAuthSessionProvider>
         </ThemeProvider>
+
       </body>
     </html>
   );
