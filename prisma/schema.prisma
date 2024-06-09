@@ -35,8 +35,8 @@ model User {
     hashedPassword String?
     role           Role      @default(USER)
 
-    accounts Account[]
-    orders   Order[]
+    accounts       Account[]
+    orders         Order[]
 }
 
 model Order {
@@ -60,9 +60,13 @@ type CartProductType {
     description String
     category    String
     brand       String
-    selectedImg String
+    selectedImg Image
     quantity    Int
     price       Float
+}
+
+type Image{
+    image String
 }
 
 type Address {

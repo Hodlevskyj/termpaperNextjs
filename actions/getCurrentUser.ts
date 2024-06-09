@@ -10,7 +10,7 @@ export async function getSession() {
 export async function getCurrentUser() {
   try {
     const session = await getSession();
-    console.log("Session:", session);
+    // console.log("Session:", session);
     if (!session?.user?.email) {
       return null;
     }
@@ -19,7 +19,7 @@ export async function getCurrentUser() {
         email: session?.user?.email,
       },
     });
-    console.log("Current user from DB:", currentUser);
+    // console.log("Current user from DB:", currentUser);
     if (!currentUser) {
       return null;
     }

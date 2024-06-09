@@ -14,8 +14,11 @@ const calculateOrderAmount = (items: CartProductType[]) => {
         const itemTotal = item.price * item.quantity;
         return acc + itemTotal;
     }, 0);
-    return totalPrice;
+    const fixedPrice:any = Math.floor(totalPrice)
+    return fixedPrice;
 };
+
+
 
 export async function POST(request: Request) {
     const currentUser = await getCurrentUser();
@@ -31,7 +34,7 @@ export async function POST(request: Request) {
     const orderData = {
         user: { connect: { id: currentUser.id } },
         amount: total,
-        currency: 'usd', // виправлено написання
+        currency: 'usd',
         status: 'pending',
         deliveryStatus: 'pending',
         paymentIntentId: payment_intent_id,
@@ -62,7 +65,7 @@ export async function POST(request: Request) {
             return NextResponse.json({ paymentIntent: updated_intent });
         }
     } else {
-        // створення нового замовлення
+        // створення замовлення
         const paymentIntent = await stripe.paymentIntents.create({
             amount: total,
             currency: "usd",

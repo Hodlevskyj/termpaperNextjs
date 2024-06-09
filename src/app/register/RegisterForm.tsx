@@ -82,7 +82,7 @@
 
 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -95,6 +95,12 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
+import { SafeUser } from '../../../types';
+
+interface RegisterProps{
+  currentUser:SafeUser | null
+}
 
 const schema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
@@ -102,13 +108,21 @@ const schema = z.object({
   password: z.string().min(5, { message: "Password must be at least 5 characters long" })
 });
 
-export function RegisterForm() {
+export function RegisterForm({ currentUser }: RegisterProps) {
+// export function RegisterForm() {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
   });
 
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  useEffect(()=>{
+    if(currentUser){
+      router.push('/');
+      router.refresh();
+    }
+  },[])
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setLoading(true);
@@ -123,6 +137,18 @@ export function RegisterForm() {
       setLoading(false);
     }
   };
+
+  const handleProviderLogin = async (provider: string) => {
+    setLoading(true);
+    try {
+      await signIn(provider, { callbackUrl: "/" });
+    } finally {
+      setLoading(false);
+    }
+  }; 
+  if(currentUser){
+    return <p className='text-center'>Redirecting...</p>
+  }
 
   return (
     <Card className="mx-auto max-w-sm">
@@ -168,13 +194,23 @@ export function RegisterForm() {
           <Button type="submit" className="w-full" disabled={loading}>
             Create an account
           </Button>
-          <Button variant="outline" className="w-full" onClick={() => { signIn('github', { callbackUrl: "/" }) }}>
-            Sign up with GitHub
-          </Button>
-          <Button variant="outline" className="w-full" onClick={() => { signIn('google', { callbackUrl: "/" }) }}>
-            Sign up with Google
-          </Button>
         </form>
+        <Button
+          variant="outline"
+          className="w-full mt-2 flex items-center justify-center"
+          onClick={() => handleProviderLogin('github')}
+          disabled={loading}
+        >
+          <FaGithub className="mr-2" /> Sign up with GitHub
+        </Button>
+        <Button
+          variant="outline"
+          className="w-full mt-2 flex items-center justify-center"
+          onClick={() => handleProviderLogin('google')}
+          disabled={loading}
+        >
+          <FaGoogle className="mr-2" /> Sign up with Google
+        </Button>
         <div className="mt-4 text-center text-sm">
           Already have an account?{" "}
           <Link href="/login" className="underline">
@@ -188,4 +224,4 @@ export function RegisterForm() {
 
 export default RegisterForm;
 
-  
+

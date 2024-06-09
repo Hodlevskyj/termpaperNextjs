@@ -1,4 +1,4 @@
-import HeadingofRating from '@/components/Heading';
+import Heading from '@/components/Heading';
 import React from 'react'
 import moment from 'moment'
 import { Rating } from '@mui/material';
@@ -13,7 +13,7 @@ interface ListofRatingprops {
 const ListOfRating: React.FC<ListofRatingprops> = ({ product }) => {
   return (
       <div>
-        <HeadingofRating title="Product Review" />
+        <Heading title="Product Review" />
         <div className='text-sm mt-2'>
           {product.reviews && product.reviews.map((review: any) => {
             return <div key={review.id} className='max-w-[300px]'>

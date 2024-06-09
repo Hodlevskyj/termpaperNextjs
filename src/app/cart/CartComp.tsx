@@ -8,10 +8,17 @@ import HorizontalLine from '@/components/ui/HorizontalLine';
 import CartContent from './CartContent';
 import { priceFormat } from '@/utils/priceFormat';
 import Heading from '@/components/Heading';
+import { SafeUser } from '../../../types';
+import { useRouter } from 'next/router';
+
+interface CartCompProps{
+    currentUser:SafeUser | null;
+}
 
 
-const CartComp = () => {
+const CartComp = ({currentUser}:CartCompProps) => {
     const { cartProducts, handleClearCart, cartTotalAmount } = useCart();
+    // const router = useRouter();
     if (!cartProducts || cartProducts.length === 0) {
         return (
             <div className='flex flex-col items-center'>
@@ -45,14 +52,18 @@ const CartComp = () => {
             <div className='border-t-[3.5px] border-purple-200 py-4 flex justify-between gap-4'>
                 {/* <HorizontalLine /> */}
                 <div>
-                    <Button variant="destructive" onClick={() => { handleClearCart() }}>Clear Cart</Button>
+                    <Button variant="destructive" onClick={() => { handleClearCart() }}>
+                        Clear Cart
+                    </Button>
                 </div>
                 <div>
                     <div className="font-bold">
                         <p>{priceFormat(cartTotalAmount)}</p>
                     </div>
                     <div>
-                        <Button onClick={() => { }} className='gap-4 px-8 py-4 text-lg'>Order</Button>
+                        <Button onClick={() => { }} className='gap-4 px-8 py-4 text-lg'>
+                           {currentUser ? <Link href={'/checkout'}>Order</Link> : <Link href={'/login'}>Login to order</Link>}
+                        </Button>
                         <Link href={"/"} className='text-slate-500 flex items-center gap-1 mt-2'>
                             <IoArrowBackOutline />
                             <p>Continue Shopping</p>

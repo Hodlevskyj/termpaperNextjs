@@ -74,7 +74,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -82,21 +82,33 @@ import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
-import axios from 'axios';
 import { signIn } from 'next-auth/react';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
+import { SafeUser } from "../../../types";
+
+interface LoginProps{
+    currentUser:SafeUser | null
+  }
 
 const schema = z.object({
     email: z.string().email({ message: "Invalid email address" }),
     password: z.string().min(6, { message: "Password must be at least 6 characters long" }),
 });
 
-export function LoginForm() {
+export function LoginForm({currentUser}:LoginProps) {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(schema),
     });
 
     const [loading, setLoading] = useState(false);
     const router = useRouter();
+
+    useEffect(()=>{
+        if(currentUser){
+          router.push('/');
+          router.refresh();
+        }
+      },[])
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         setLoading(true);
@@ -108,12 +120,25 @@ export function LoginForm() {
 
         if (login?.ok) {
             toast.success("Correct login");
-            window.location.assign('/');
+            // window.location.assign('/');
+            router.push('/');
         } else if (login?.error) {
             toast.error(login?.error);
         }
         setLoading(false);
     };
+
+    const handleProviderLogin = async (provider: string) => {
+        setLoading(true);
+        try {
+            await signIn(provider, { callbackUrl: "/" });
+        } finally {
+            setLoading(false);
+        }
+    };
+    if(currentUser){
+        return <p className='text-center'>Redirecting...</p>
+      }
 
     return (
         <Card className="mx-auto max-w-sm">
@@ -149,13 +174,21 @@ export function LoginForm() {
                     <Button type="submit" className="w-full" disabled={loading}>
                         Login
                     </Button>
-                    <Button variant="outline" className="w-full" onClick={() => { signIn('github', { callbackUrl: "/" }) }}>
-                        Login with GitHub
-                    </Button>
-                    <Button variant="outline" className="w-full" onClick={() => { signIn('google', { callbackUrl: "/" }) }}>
-                        Login with Google
-                    </Button>
                 </form>
+                <Button
+                    variant="outline"
+                    className="w-full mt-2 flex items-center justify-center"
+                    onClick={() => handleProviderLogin('github')}
+                >
+                    <FaGithub className="mr-2" /> Login with GitHub
+                </Button>
+                <Button
+                    variant="outline"
+                    className="w-full mt-2 flex items-center justify-center"
+                    onClick={() => handleProviderLogin('google')}
+                >
+                    <FaGoogle className="mr-2" /> Login with Google
+                </Button>
                 <div className="mt-4 text-center text-sm">
                     Don&apos;t have an account?{" "}
                     <Link href="/register" className="underline">
@@ -168,3 +201,4 @@ export function LoginForm() {
 }
 
 export default LoginForm;
+

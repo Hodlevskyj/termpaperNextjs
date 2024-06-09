@@ -16,15 +16,22 @@
 
 // export default Register
 
+// "use client"
 import Register from "@/components/Register";
 import RegisterForm from "./RegisterForm";
 import Container from '@/components/ui/container'
 import FormWraper from '@/components/FormWraper'
-export default function RegisterFormPage() {
+import { getCurrentUser } from "../../../actions/getCurrentUser";
+
+export default async function RegisterFormPage() {
+
+    const currentUser = await getCurrentUser();
+
     return (
         <Container>
             <FormWraper>
-                <RegisterForm />
+                <RegisterForm currentUser={currentUser} />
+                {/* <RegisterForm /> */}
             </FormWraper>
 
         </Container>
