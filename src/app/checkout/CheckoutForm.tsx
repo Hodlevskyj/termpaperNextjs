@@ -53,7 +53,7 @@ const CheckoutForm = ({clientSecret,handleSetPaymentSuccess}:CheckoutFormProps) 
   }
 
     return (
-    <form onSubmit={handleSubmit} id="payment-form">
+    <form onSubmit={handleSubmit} id="payment-form" method='post'>
         <div className='mb-6'>
             <Heading title="Enter your details"/>
         </div>
