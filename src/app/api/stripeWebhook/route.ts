@@ -1,17 +1,13 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { NextRequest } from 'next/server';
-import prisma from "../../../../libs/prismadb";
+import prisma from '../../../../libs/prismadb';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: '2024-04-10',
 });
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+export const dynamic = 'force-dynamic';
 
 async function buffer(readable: ReadableStream) {
   const reader = readable.getReader();
