@@ -7,6 +7,30 @@ generator client {
     provider = "prisma-client-js"
 }
 
+model Product{
+    id                String  @id @default(auto()) @map("_id") @db.ObjectId
+    name String
+    description String
+    price Float
+    brand String
+    category String
+    inStock Boolean
+    image String
+    reviews Review[]
+}
+
+model Review{
+   id                String  @id @default(auto()) @map("_id") @db.ObjectId
+   userId            String  @db.ObjectId
+   productId  String  @db.ObjectId
+   rating Int
+   comment String
+   createAt DateTime          @default(now())
+
+   product Product @relation(fields: [productId],references: [id])
+   user User @relation(fields: [userId],references: [id],onDelete: Cascade)
+}
+
 model Account {
     id                String  @id @default(auto()) @map("_id") @db.ObjectId
     userId            String  @db.ObjectId
@@ -37,6 +61,7 @@ model User {
 
     accounts       Account[]
     orders         Order[]
+    review         Review[]
 }
 
 model Order {
@@ -60,14 +85,14 @@ type CartProductType {
     description String
     category    String
     brand       String
-    selectedImg Image
+    selectedImg String
     quantity    Int
     price       Float
 }
 
-type Image{
-    image String
-}
+// type Image{
+//     image String
+// }
 
 type Address {
     city        String
