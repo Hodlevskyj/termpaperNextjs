@@ -27,7 +27,6 @@ const schema = z.object({
 });
 
 export function RegisterForm({ currentUser }: RegisterProps) {
-// export function RegisterForm() {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
   });

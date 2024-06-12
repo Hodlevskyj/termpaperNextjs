@@ -27,6 +27,17 @@ export async function POST(request: Request) {
   const { items, payment_intent_id } = body;
   const total = calculateOrderAmount(items) * 100; // stripe бере значення у центах
 
+  const formattedItems = items.map((item: CartProductType) => ({
+    id: item.id,
+    name: item.name,
+    description: item.description,
+    price: item.price,
+    brand: item.brand,
+    category: item.category,
+    selectedImg: item.selectedImg.image, // Ensure this is a string
+    quantity: item.quantity,
+  }));
+
   const orderData = {
     user: { connect: { id: currentUser.id } },
     amount: total,
@@ -34,7 +45,7 @@ export async function POST(request: Request) {
     status: 'pending',
     deliveryStatus: 'pending',
     paymentIntentId: payment_intent_id,
-    products: items
+    products: formattedItems
   };
 
   if (payment_intent_id) {
@@ -53,7 +64,7 @@ export async function POST(request: Request) {
 
       await prisma.order.update({
         where: { paymentIntentId: payment_intent_id },
-        data: { amount: total, products: items }
+        data: { amount: total, products: formattedItems }
       });
 
       return NextResponse.json({ paymentIntent: updated_intent });
