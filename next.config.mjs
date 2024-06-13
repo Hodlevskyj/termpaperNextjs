@@ -10,6 +10,9 @@ const nextConfig = {
         config.externals = [...config.externals, 'bcrypt'];
         return config;
     },
+    images: {
+        domains: ['firebasestorage.googleapis.com'],
+      },
 };
 
 export default nextConfig;

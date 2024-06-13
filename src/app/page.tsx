@@ -2,17 +2,14 @@ import Container from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag } from "lucide-react";
 import ProductList from "@/components/ProductList";
-// import products from "../../products.json"
-import { products } from "../utils/products"
-import { reduceText } from "@/utils/reduceText";
-import ProductCard from "@/components/ui/ProductCard";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../libs/AuthOptions";
-import { SessionProvider } from "next-auth/react";
+import getProducts from "../../actions/getProduct";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
-  console.log(session);
+
+
   return (
     <>
       <div>Hello user - {session?.user?.email}</div>
@@ -35,7 +32,7 @@ export default async function Home() {
             </div>
           </div>
           <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
-            <ProductList items={products} />
+            <ProductList searchParams={{ category: null, searchTerm: '' }} />
           </div>
         </div>
       </Container>

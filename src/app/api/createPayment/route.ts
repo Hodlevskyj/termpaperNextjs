@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     price: item.price,
     brand: item.brand,
     category: item.category,
-    selectedImg: item.selectedImg.image, // Ensure this is a string
+    selectedImg: item.selectedImg,
     quantity: item.quantity,
   }));
 
