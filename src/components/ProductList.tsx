@@ -24,3 +24,4 @@ const ProductList = async ({ searchParams }: ProductListProps) => {
 };
 
 export default ProductList;
+

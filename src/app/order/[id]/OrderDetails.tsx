@@ -1,4 +1,4 @@
-'use client'
+// 'use client's
 import Heading from '@/components/Heading'
 import { priceFormat } from '@/utils/priceFormat'
 import { Order } from '@prisma/client'
@@ -11,7 +11,7 @@ interface OrderDetailsProps{
 
 
 const OrderDetails = ({order}:OrderDetailsProps) => {
-  const router = useRouter();
+  // const router = useRouter();
     return (
     <div className='max-w-[1150px] m-auto flex flex-col gap-2'>
         <div className='mt-8'>

@@ -11,6 +11,8 @@ interface ListofRatingprops {
 }
 
 const ListOfRating: React.FC<ListofRatingprops> = ({ product }) => {
+  if(product.reviews.length ===0) 
+    return <p className='font-bold'>No comments yet</p>
   return (
       <div>
         <Heading title="Product Review" />

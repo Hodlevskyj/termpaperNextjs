@@ -5,14 +5,13 @@ import ProductList from "@/components/ProductList";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../libs/AuthOptions";
 import getProducts from "../../actions/getProduct";
+import CategoryNav from "../components/CategoryNav";
+import Categories from "@/components/Categories";
 
-export default async function Home() {
-  const session = await getServerSession(authOptions);
-
+export default function Home() {
 
   return (
     <>
-      <div>Hello user - {session?.user?.email}</div>
       <Container>
         <div className="space-y-10 pb-10">
           <div className="p-4 sm:p-6 lg:p-8 rounded-lg overflow-hidden">

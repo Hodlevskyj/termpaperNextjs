@@ -86,7 +86,7 @@ const CheckoutClient = () => {
                 <div className='flex items-center flex-col gap-4'>
                     <div className='text-center'>Оплата успішна</div>
                     <div className='w-full'>
-                        <Button onClick={() => router.push('/order')}>
+                        <Button onClick={() => router.push('/orders')}>
                             Переглянути ваше замовлення
                         </Button>
                     </div>
