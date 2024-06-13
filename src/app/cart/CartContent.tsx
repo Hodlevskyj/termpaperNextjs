@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import React from 'react';
 import { CartProductType } from '@/components/ProductDetails';
 import { priceFormat } from '@/utils/priceFormat';
@@ -22,8 +22,7 @@ const CartContent: React.FC<CartContentProps> = ({ item }) => {
         <Link href={`/product/${item.id}`}>
           <div className='relative w-[70px] h-[70px]'>
             <Image 
-              // src={item.selectedImg.image} 
-              src={item.selectedImg.image} 
+              src={item.selectedImg} 
               alt={item.name} 
               layout='fill' 
               objectFit='contain' 

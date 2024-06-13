@@ -25,9 +25,10 @@ export type CartProductType = {
   description: string;
   category: string;
   brand: string;
-  selectedImg: {
-    image:string
-  };
+  // selectedImg: {
+  //   image: string
+  // };
+  selectedImg: string;
   quantity: number;
   price: number;
 }
@@ -59,7 +60,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         setIsProductInCart(true);
       }
     }
-  }, [cartProducts]);
+    // }, [cartProducts]);
+  }, [cartProducts, product.id]);
 
   const productRating = product.reviews && product.reviews.length > 0
     ? product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) / product.reviews.length
@@ -129,10 +131,12 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                 {/* <Button 
             label="Add to Cart"
             onClick={()=>{}}/> */}
+
                 <Button variant="secondary" className='w-full'
                   onClick={() => handleAddItemToCart(cartProduct)}>
                   Add to Cart
                 </Button>
+
               </div>
             </>
           )}

@@ -78,6 +78,9 @@ const ProductActions = ({ productId, inStock, images }: ProductActionsProps) => 
                     {inStock ? "Out of stock" : "In stock"}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
+                {/* <DropdownMenuItem onClick={() => router.push(`product/${productId}`)}>Watch product</DropdownMenuItem> */}
+                <DropdownMenuItem onClick={()=>router.push(`product/${productId}`)}>Watch product</DropdownMenuItem>
+                <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={() => handleDelete(productId, images)}>Delete product</DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

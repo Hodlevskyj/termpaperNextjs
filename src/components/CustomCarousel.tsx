@@ -28,7 +28,7 @@ const CustomCarousel: React.FC<ProductProps> = ({ cartProduct, product }) => {
                 <Card>
                   <CardContent className="flex aspect-square items-center justify-center p-6 relative">
                     <Image
-                      src={image.image}
+                      src={image}
                       alt={`Image ${index + 1}`}
                       layout="fill"
                       objectFit="contain"
