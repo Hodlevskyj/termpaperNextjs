@@ -17,13 +17,13 @@ export default function Footer() {
                         </ul>
                     </div>
                     <div className="flex justify-center space-x-4">
-                        <Link href={""}>
+                        <Link href={""} aria-label="Instagram">
                             <Instagram className="h-6 w-6 text-gray-600 hover:text-gray-800" />
                         </Link>
-                        <Link href={""}>
+                        <Link href={""} aria-label="Github">
                             <Github className="h-6 w-6 text-gray-600 hover:text-gray-800" />
                         </Link>
-                        <Link href={""}>
+                        <Link href={""} aria-label="Twitter">
                             <Twitter className="h-6 w-6 text-gray-600 hover:text-gray-800" />
                         </Link>
                     </div>

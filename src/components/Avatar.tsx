@@ -1,9 +1,4 @@
 import React from 'react'
-import {
-    Avatar,
-    AvatarFallback,
-    AvatarImage,
-} from "@/components/ui/avatar"
 import { RxAvatar } from "react-icons/rx";
 
 interface AvatarProps {
@@ -12,14 +7,13 @@ interface AvatarProps {
 
 const AvatarComponent: React.FC<AvatarProps> = ({ src }) => {
     if (src) {
-        return(
-        <Avatar>
-            <AvatarImage src={src} alt="avatar" />
-        </Avatar>
-    )}
-    return (
-        <RxAvatar size={40} />
-    )
+        return (
+            <div className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
+                <img src={src} alt="avatar" className="h-full w-full object-cover" />
+            </div>
+        );
+    }
+    return <RxAvatar size={40} />;
 }
 
-export default AvatarComponent
+export default AvatarComponent;

@@ -38,7 +38,7 @@ const Header = () => {
           <div className="flex items-center">
             <Link href="/" className="ml-4 lg:ml-0">
               <h1 className="text-xl font-bold">
-                NexjsStore
+                NextjsStore
               </h1>
             </Link>
           </div>
