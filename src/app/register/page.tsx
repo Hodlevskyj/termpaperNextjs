@@ -1,4 +1,3 @@
-import Register from "@/components/Register";
 import RegisterForm from "./RegisterForm";
 import Container from '@/components/ui/container'
 import FormWraper from '@/components/FormWraper'

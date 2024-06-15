@@ -7,16 +7,11 @@ import SideNav from './components/SideNav';
 
 const Main = () => {
     return (
-        // <TooltipProvider>
-        //     <SideNav />
-        // </TooltipProvider>
-        <>
-            
-        </>
 
-    // <TooltipProvider>
-    //    <Dashboard />
-    // </TooltipProvider>
+        <p className='text-center font-bold'>
+            Admin page
+        </p>
+
   )
 }
 

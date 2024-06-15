@@ -13,7 +13,7 @@ import {
   Search,
   Settings,
   ShoppingCart,
-  Users2,
+  Users2
 } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
