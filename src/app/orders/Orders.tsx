@@ -70,11 +70,6 @@ export const columns: ColumnDef<Order>[] = [
         enableHiding: false,
     },
     {
-        accessorKey: "user",
-        header: "User",
-        cell: ({ row }) => <div>{row.original.userId}</div>,
-    },
-    {
         accessorKey: "amount",
         header: "Amount",
         cell: ({ row }) => <div>{priceFormat(row.getValue("amount"))}</div>,
@@ -139,14 +134,14 @@ function Orders({ orders }: OrdersProps) {
     return (
         <div className="w-full">
             <div className="flex items-center py-4">
-                <Input
+                {/* <Input
                     placeholder="Filter user..."
                     value={(table.getColumn("user")?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
                         table.getColumn("user")?.setFilterValue(event.target.value)
                     }
                     className="max-w-sm"
-                />
+                /> */}
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button variant="outline" className="ml-auto">

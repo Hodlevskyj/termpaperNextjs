@@ -36,7 +36,7 @@ const CustomInput: React.FC<InputProps> = ({
         disabled={disabled}
         value={value} 
         onChange={onChange} 
-        className={`w-full p-4 pt-6 outline-none rounded-md 
+        className={`w-full p-4 pt-4 outline-none rounded-md 
         ${errors[id] ? 'border-rose-400' : 'border-slate-300'} 
         ${errors[id] ? 'focus:border-rose-400' : 'focus:border-slate-300'}`}
       />

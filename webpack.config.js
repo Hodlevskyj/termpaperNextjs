@@ -1,4 +1,4 @@
-const path = require('path');
+// const path = require('path');
 
 module.exports = {
   output: {
@@ -6,5 +6,14 @@ module.exports = {
   },
   module: {
     rules: [{ test: /\.txt$/, use: 'raw-loader' }],
-  },s
+  },
+  presets: [
+    '@babel/preset-env',
+    '@babel/preset-react',
+    '@babel/preset-flow',
+  ],
+  plugins: [
+    'babel-plugin-styled-components',
+    '@babel/plugin-proposal-class-properties',
+  ]
 };

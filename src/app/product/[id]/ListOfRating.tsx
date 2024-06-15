@@ -11,6 +11,8 @@ interface ListofRatingprops {
 }
 
 const ListOfRating: React.FC<ListofRatingprops> = ({ product }) => {
+  if(product.reviews.length ===0) 
+    return <p className='font-bold'>No comments yet</p>
   return (
       <div>
         <Heading title="Product Review" />
@@ -18,10 +20,8 @@ const ListOfRating: React.FC<ListofRatingprops> = ({ product }) => {
           {product.reviews && product.reviews.map((review: any) => {
             return <div key={review.id} className='max-w-[300px]'>
               <div className='flex gap-2 items-center'>
-                <AvatarComponent src={review?.user.image} />
-                {/* <AvatarComponent src="https://github.com/shadcn.png"/> */}
+                <AvatarComponent src={review.user.image} />
                 <div className='font-semibold'>{review?.user.name}</div>
-                <div className='font-light'>{moment(review.createdDate).fromNow()}</div>
               </div>
 
               <div className='mt-2'>
